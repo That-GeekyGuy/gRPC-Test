@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: grpc-chat-server
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: grpc-chat
+  template:
+    metadata:
+      labels:
+        app: grpc-chat
+    spec:
+      containers:
+        - name: server
+          image: your-dockerhub-username/grpc-chat-server:latest
+          ports:
+            - containerPort: 50051
